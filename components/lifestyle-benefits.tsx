@@ -4,7 +4,7 @@ const blocks = [
   {
     image: "/images/sauna_steam.jpg",
     alt: "Steam rising in a wood-panelled sauna",
-    heading: "Stay longer, go deeper",
+    heading: "Longer sessions, deeper recovery.",
     body: "Thermal regulation lets you push past the point where most people tap out — where the real cardiovascular and nervous system benefits begin.",
   },
   {

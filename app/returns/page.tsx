@@ -29,10 +29,10 @@ export default function ReturnsPage() {
         <p className="text-sm font-light leading-[1.7] text-warm-brown">
           To initiate a return, email us at{" "}
           <a
-            href="mailto:hello@woolen.co"
+            href="mailto:hello@wearwoolen.com"
             className="text-charcoal underline underline-offset-2 transition-colors hover:text-warm-brown"
           >
-            hello@woolen.co
+            hello@wearwoolen.com
           </a>{" "}
           with your order number and we will provide return instructions.
           Refunds are processed within 5–7 working days of receiving the
@@ -50,10 +50,10 @@ export default function ReturnsPage() {
         <p className="text-sm font-light leading-[1.7] text-warm-brown">
           If you would like to exchange your item, email us at{" "}
           <a
-            href="mailto:hello@woolen.co"
+            href="mailto:hello@wearwoolen.com"
             className="text-charcoal underline underline-offset-2 transition-colors hover:text-warm-brown"
           >
-            hello@woolen.co
+            hello@wearwoolen.com
           </a>{" "}
           and we will arrange the exchange. We cover return shipping costs on
           all exchanges within the UK. International exchange shipping is

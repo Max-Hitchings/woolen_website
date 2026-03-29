@@ -42,5 +42,7 @@ This repo contains the Woolen marketing site: a premium, mobile-first brand expe
 - The site direction is established as calm, premium, and editorial rather than startup-like.
 - The homepage already uses real imagery from `public/images/` instead of neutral placeholders.
 - The homepage now includes a founders introduction section using `public/images/founders.jpg` and brief personal-first copy for Max and Jack.
+- The homepage lifestyle/benefits section now uses the more explicit line "Longer sessions, deeper recovery." to frame one of the core product benefits in a restrained, recovery-oriented tone.
+- The contact, shipping, and returns pages now consistently direct support enquiries to `hello@wearwoolen.com`.
 - The sold-out framing and waitlist CTA pattern are present across the experience.
 - Brand and layout direction are established, but production-ready proof, integrations, and final launch polish are still in progress.

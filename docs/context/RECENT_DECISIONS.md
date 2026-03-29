@@ -1,6 +1,14 @@
 # Recent Decisions
 
 ## 2026-03-29
+- Change: Updated the site support email from `hello@woolen.co` to `hello@wearwoolen.com` across the contact, shipping, and returns pages.
+- Why: The live contact address needed to match the correct brand domain and avoid routing users to the wrong inbox.
+- Follow-up: Keep any future visible email references and `mailto:` links aligned to the same canonical support address.
+
+- Change: Reworded the homepage lifestyle benefit headline from "Stay longer, go deeper" to "Longer sessions, deeper recovery."
+- Why: The revised line states the user benefit more clearly and aligns better with Woolen's calm, factual wellness positioning.
+- Follow-up: Keep future homepage benefit copy specific and benefit-led rather than abstract or slogan-like.
+
 - Change: Wrapped the global Meta Pixel component in a React `Suspense` boundary from the root layout.
 - Why: Next.js 16 fails static prerendering for `/_not-found` when a layout-mounted client component calls `useSearchParams()` without suspense, which was breaking Vercel builds.
 - Follow-up: Keep any future layout-level consumers of `useSearchParams()` or similar client navigation hooks inside suspense boundaries to avoid regressions during prerender.
@@ -30,5 +38,3 @@
 - Change: Made the shared header wordmark link back to the homepage.
 - Why: The top-left brand mark should behave like a standard home navigation affordance across the site.
 - Follow-up: Keep shared header navigation behavior consistent if additional clickable brand elements are introduced.
-
-

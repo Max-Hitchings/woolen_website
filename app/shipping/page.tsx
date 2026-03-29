@@ -62,10 +62,10 @@ export default function ShippingPage() {
           order has been dispatched. If you have any questions about your
           delivery, contact us at{" "}
           <a
-            href="mailto:hello@woolen.co"
+            href="mailto:hello@wearwoolen.com"
             className="text-charcoal underline underline-offset-2 transition-colors hover:text-warm-brown"
           >
-            hello@woolen.co
+            hello@wearwoolen.com
           </a>
           .
         </p>

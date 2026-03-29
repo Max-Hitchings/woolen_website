@@ -25,10 +25,10 @@ export default function ContactPage() {
             Email
           </p>
           <a
-            href="mailto:hello@woolen.co"
+            href="mailto:hello@wearwoolen.com"
             className="font-serif text-[24px] font-normal text-charcoal transition-colors hover:text-warm-brown"
           >
-            hello@woolen.co
+            hello@wearwoolen.com
           </a>
         </div>
 
