@@ -1,6 +1,10 @@
 # Recent Decisions
 
 ## 2026-03-29
+- Change: Added Meta Pixel and Meta Conversions API tracking for waitlist signups with deduplicated `Lead` events.
+- Why: Meta ads need reliable browser and server conversion signals so waitlist campaigns can optimize toward real signups instead of weaker click proxies.
+- Follow-up: Populate `META_PIXEL_ID`, `META_ACCESS_TOKEN`, and optional `META_TEST_EVENT_CODE`, then verify deduplication in Meta Events Manager before scaling spend.
+
 - Change: Replaced the default tab icon with a custom Woolen favicon.
 - Why: The live site needed a browser tab icon that matched the brand rather than the default framework mark.
 - Follow-up: If a final monogram or brand icon is introduced, update `app/icon.svg` to match it.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import MetaPixel from "@/components/meta-pixel";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -40,12 +41,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const metaPixelId = process.env.META_PIXEL_ID;
+
   return (
     <html
       lang="en"
       className={`${cormorantGaramond.variable} ${dmSans.variable}`}
     >
       <body suppressHydrationWarning>
+        <MetaPixel pixelId={metaPixelId} />
         {children}
         <SpeedInsights />
       </body>

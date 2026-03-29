@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackMetaLead } from "@/lib/meta-browser";
 
 export default function WaitlistSection() {
   const [email, setEmail] = useState("");
@@ -11,15 +12,21 @@ export default function WaitlistSection() {
     e.preventDefault();
     setStatus("loading");
 
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
     try {
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, eventId }),
       });
       const data = await res.json();
 
       if (res.ok) {
+        trackMetaLead(eventId);
         setStatus("success");
         setMessage("You're on the list. We'll be in touch.");
         setEmail("");

@@ -14,6 +14,9 @@ This repo contains the Woolen marketing site: a premium, mobile-first brand expe
 - Brand styling is established through the current font setup, palette, layout direction, and static imagery in `public/images/`.
 - The site uses a custom Woolen favicon via App Router metadata instead of the default framework tab icon.
 - The waitlist API route accepts POST requests, validates email format, and creates contacts in Loops.so with mailing list enrollment.
+- Meta Pixel is wired globally from the root layout and tracks `PageView` events across initial loads and client-side route changes when `META_PIXEL_ID` is configured.
+- Successful waitlist submissions now emit matching browser and server `Lead` events to Meta using a shared `event_id` for deduplication.
+- The waitlist flow persists `_fbc` from inbound `fbclid` query params and forwards `_fbp` / `_fbc`, hashed email, IP, and user agent to Meta Conversions API when configured.
 - The root layout suppresses hydration warnings on `<body>` so extension-injected body attributes do not trigger false-positive hydration mismatch errors during development.
 - Next.js development config explicitly allows requests from `192.168.0.15` via `allowedDevOrigins`, supporting LAN-based local testing against the dev server.
 
@@ -24,13 +27,15 @@ This repo contains the Woolen marketing site: a premium, mobile-first brand expe
 
 ## Known Gaps
 - Waitlist validation does not include rate limiting or operational monitoring.
+- Meta test verification still depends on production env setup and Events Manager confirmation outside the repo.
 - The project docs system is newly introduced and will need to be kept current as the site evolves.
 
 ## Integration Status
 - Deployment target: Vercel
 - Waitlist capture: Loops.so (contacts API with mailing list enrollment)
 - Email marketing: Loops.so
-- Analytics and other operational integrations: not evident from the current codebase
+- Paid social tracking: Meta Pixel + Meta Conversions API for waitlist `Lead` events
+- Analytics and broader operational reporting: otherwise minimal beyond Vercel Speed Insights
 
 ## Current Content / Design Status
 - The site direction is established as calm, premium, and editorial rather than startup-like.
