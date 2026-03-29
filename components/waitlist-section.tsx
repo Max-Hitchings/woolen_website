@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 export default function WaitlistSection() {
   const [email, setEmail] = useState("");
@@ -36,12 +35,7 @@ export default function WaitlistSection() {
 
   return (
     <section id="waitlist" className="bg-cream px-6 py-16 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true, margin: "-50px" }}
-      >
+      <div>
         <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-warm-brown mb-4">
           Join the ritual
         </p>
@@ -78,7 +72,7 @@ export default function WaitlistSection() {
             )}
           </form>
         )}
-      </motion.div>
+      </div>
     </section>
   );
 }

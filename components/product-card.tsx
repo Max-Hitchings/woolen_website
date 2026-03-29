@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 const specs = [
   "100% merino wool felt",
@@ -11,19 +9,16 @@ const specs = [
 
 export default function ProductCard() {
   return (
-    <section className="bg-cream px-6 py-14">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true, margin: "-50px" }}
-        className="bg-off-white p-6 pt-8"
-      >
-        {/* Product image placeholder */}
-        <div className="w-full aspect-square bg-gradient-to-br from-sand to-[#C4B5A3] mb-7 flex items-center justify-center">
-          <span className="text-deep-brown/20 text-xs tracking-[0.15em] uppercase">
-            Product image
-          </span>
+    <section id="product" className="bg-cream px-6 py-14 scroll-mt-20">
+      <div className="bg-off-white p-6 pt-8">
+        <div className="relative w-full aspect-square mb-7">
+          <Image
+            src="/images/product_image.jpeg"
+            alt="Woolen merino wool sauna hat — floating product shot showing embossed logo and felt texture"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
 
         <h3 className="font-serif text-2xl font-normal text-charcoal mb-1">
@@ -49,7 +44,7 @@ export default function ProductCard() {
         >
           Join waitlist for restock
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 }

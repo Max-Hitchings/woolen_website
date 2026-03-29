@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Woolen — Made for Modern Rituals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0EB;
+    --sand: #D4C5B4;
+    --warm-brown: #8B7355;
+    --deep-brown: #3D2E1F;
+    --charcoal: #2A2420;
+    --off-white: #FAF8F5;
+    --muted-gold: #B8A48C;
+    --soft-sage: #A8AE9C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    max-width: 390px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    z-index: 100;
+    background: transparent;
+    transition: background 0.4s ease;
+  }
+  .nav.scrolled {
+    background: rgba(245, 240, 235, 0.92);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: var(--off-white);
+    transition: color 0.4s ease;
+  }
+  .nav.scrolled .nav-logo { color: var(--charcoal); }
+  .nav-cart {
+    width: 20px;
+    height: 20px;
+    position: relative;
+  }
+  .nav-cart svg { stroke: var(--off-white); transition: stroke 0.4s ease; }
+  .nav.scrolled .nav-cart svg { stroke: var(--charcoal); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+  }
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(165deg, var(--warm-brown) 0%, var(--deep-brown) 60%, #2a1f15 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-placeholder-text {
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 24px 32px;
+    background: linear-gradient(to top, rgba(42,36,32,0.85) 0%, rgba(42,36,32,0.4) 60%, transparent 100%);
+  }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--off-white);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .hero-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(250,248,245,0.75);
+    line-height: 1.55;
+    margin-bottom: 24px;
+    max-width: 300px;
+  }
+  .cta-primary {
+    display: inline-block;
+    background: var(--sand);
+    color: var(--deep-brown);
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .cta-primary:hover {
+    background: var(--off-white);
+  }
+
+  /* EDUCATION SECTION — "Why" */
+  .section-why {
+    padding: 56px 24px;
+    background: var(--off-white);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-brown);
+    margin-bottom: 16px;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .section-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--warm-brown);
+    margin-bottom: 28px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(180,164,140,0.25);
+  }
+  .stat {
+    flex: 1;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .stat-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--warm-brown);
+    line-height: 1.45;
+  }
+
+  /* LIFESTYLE IMAGES WITH CAPTIONS */
+  .lifestyle-section {
+    padding: 0 24px 56px;
+    background: var(--off-white);
+  }
+  .lifestyle-block {
+    margin-bottom: 40px;
+  }
+  .lifestyle-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+  .lifestyle-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lifestyle-placeholder:nth-of-type(1) {
+    background: linear-gradient(145deg, #8B7355 0%, #6B5740 100%);
+  }
+  .lifestyle-caption {
+    padding-top: 16px;
+  }
+  .lifestyle-caption h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .lifestyle-caption p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-brown);
+    line-height: 1.55;
+  }
+
+  /* PRODUCT DETAIL */
+  .product-section {
+    padding: 56px 24px;
+    background: var(--cream);
+  }
+  .product-card {
+    background: var(--off-white);
+    padding: 32px 24px;
+  }
+  .product-img-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, var(--sand) 0%, #C4B5A3 100%);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-img-placeholder span {
+    color: rgba(61,46,31,0.2);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .product-price {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--warm-brown);
+    margin-bottom: 16px;
+  }
+  .product-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(180,164,140,0.2);
+  }
+  .spec {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--charcoal);
+  }
+  .spec-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted-gold);
+    flex-shrink: 0;
+  }
+  .cta-primary.full-width {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* TRUST / SOCIAL PROOF */
+  .trust-section {
+    padding: 56px 24px;
+    background: var(--charcoal);
+    text-align: center;
+  }
+  .trust-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--off-white);
+    line-height: 1.45;
+    margin-bottom: 20px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .trust-source {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-gold);
+    margin-bottom: 40px;
+  }
+  .trust-logos {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    align-items: center;
+    opacity: 0.4;
+  }
+  .trust-logo {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    font-weight: 300;
+  }
+
+  /* AS SEEN IN */
+  .seen-section {
+    padding: 40px 24px;
+    background: var(--off-white);
+    text-align: center;
+  }
+  .seen-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 24px;
+  }
+  .seen-names {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .seen-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--warm-brown);
+    opacity: 0.6;
+  }
+
+  /* SECONDARY CTA */
+  .cta-section {
+    padding: 64px 24px;
+    background: var(--cream);
+    text-align: center;
+  }
+  .cta-section .section-heading {
+    margin-bottom: 12px;
+  }
+  .cta-section .section-body {
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 48px 24px 32px;
+    background: var(--charcoal);
+    color: var(--off-white);
+  }
+  .footer-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .footer-tagline {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted-gold);
+    margin-bottom: 28px;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .social-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,164,140,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+  }
+  .social-icon span {
+    font-size: 10px;
+    color: var(--muted-gold);
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .footer-col-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    margin-bottom: 14px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted-gold);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover {
+    color: var(--off-white);
+  }
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(184,164,140,0.15);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(184,164,140,0.5);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">woolen</div>
+  <div class="nav-cart">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 01-8 0"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-placeholder">
+    <span class="hero-placeholder-text">Your hero product image</span>
+  </div>
+  <div class="hero-overlay">
+    <h1 class="hero-tagline">Made for<br>modern rituals</h1>
+    <p class="hero-sub">Protect your hair, skin and health. Extend every session.</p>
+    <a href="#" class="cta-primary">Shop the sauna hat</a>
+  </div>
+</section>
+
+<!-- WHY SAUNA HATS — EDUCATION -->
+<section class="section-why">
+  <div class="fade-in">
+    <p class="section-label">Why it matters</p>
+    <h2 class="section-heading">Your head absorbs the most heat in a sauna</h2>
+    <p class="section-body">
+      Air temperature at head height can be 20–30°C hotter than at bench level. Without protection, this accelerates hair dryness, scalp stress, and cuts your session short. A properly made wool hat regulates thermal load — so you stay in longer, recover better, and protect what matters.
+    </p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-number">30°C</div>
+        <div class="stat-desc">hotter at head height than bench level</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">2×</div>
+        <div class="stat-desc">longer comfortable sessions with head protection</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE WITH CAPTIONS -->
+<section class="lifestyle-section">
+  <div class="lifestyle-block fade-in">
+    <div class="lifestyle-placeholder" style="background: linear-gradient(145deg, #7a6347 0%, #5c4a36 100%);">
+      <span style="color:rgba(255,255,255,0.2); font-size:12px; letter-spacing:0.15em; text-transform:uppercase;">Sauna lifestyle image</span>
+    </div>
+    <div class="lifestyle-caption">
+      <h3>Stay longer, go deeper</h3>
+      <p>Thermal regulation lets you push past the point where most people tap out — where the real cardiovascular and nervous system benefits begin.</p>
+    </div>
+  </div>
+
+  <div class="lifestyle-block fade-in">
+    <div class="lifestyle-placeholder" style="background: linear-gradient(145deg, #6B5740 0%, #4a3c2d 100%);">
+      <span style="color:rgba(255,255,255,0.2); font-size:12px; letter-spacing:0.15em; text-transform:uppercase;">Product detail image</span>
+    </div>
+    <div class="lifestyle-caption">
+      <h3>Considered, not compromised</h3>
+      <p>100% merino wool felt. No synthetics, no metal, no plastics. Every seam and contour shaped for performance in heat — and confidence outside it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT CARD -->
+<section class="product-section">
+  <div class="product-card fade-in">
+    <div class="product-img-placeholder">
+      <span>Product image</span>
+    </div>
+    <h3 class="product-name">The Sauna Hat</h3>
+    <p class="product-price">£45</p>
+    <div class="product-specs">
+      <div class="spec"><span class="spec-dot"></span>100% merino wool felt</div>
+      <div class="spec"><span class="spec-dot"></span>No plastics, no metal — fully sauna-safe</div>
+      <div class="spec"><span class="spec-dot"></span>Protects hair, scalp, and skin from heat stress</div>
+      <div class="spec"><span class="spec-dot"></span>Naturally temperature-regulating</div>
+    </div>
+    <a href="#" class="cta-primary full-width">Add to bag</a>
+  </div>
+</section>
+
+<!-- TRUST / SOCIAL PROOF -->
+<section class="trust-section fade-in">
+  <p class="trust-quote">"The first sauna accessory that actually looks as good as it performs."</p>
+  <p class="trust-source">Placeholder — early tester / press</p>
+  <div class="trust-logos">
+    <span class="trust-logo">Arc</span>
+    <span class="trust-logo">Third Space</span>
+    <span class="trust-logo">Othership</span>
+  </div>
+</section>
+
+<!-- AS SEEN IN -->
+<section class="seen-section fade-in">
+  <p class="seen-label">Trusted by</p>
+  <div class="seen-names">
+    <span class="seen-name">Community Saunas</span>
+    <span class="seen-name">Boutique Gyms</span>
+    <span class="seen-name">Members' Clubs</span>
+  </div>
+</section>
+
+<!-- REPEAT CTA -->
+<section class="cta-section">
+  <div class="fade-in">
+    <p class="section-label">Join the ritual</p>
+    <h2 class="section-heading">Better sessions start here</h2>
+    <p class="section-body">Be first to shop when we launch. Early access, limited first run.</p>
+    <a href="#" class="cta-primary">Join the waitlist</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">woolen</div>
+  <div class="footer-tagline">Made for modern rituals</div>
+  <div class="footer-socials">
+    <div class="social-icon"><span>IG</span></div>
+    <div class="social-icon"><span>LI</span></div>
+    <div class="social-icon"><span>X</span></div>
+  </div>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <div class="footer-col-title">Shop</div>
+      <a href="#">The Sauna Hat</a>
+      <a href="#">Gift Sets</a>
+      <a href="#">Coming Soon</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Learn</div>
+      <a href="#">Why Sauna Hats</a>
+      <a href="#">The Science</a>
+      <a href="#">Our Materials</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Woolen</div>
+      <a href="#">Our Story</a>
+      <a href="#">Journal</a>
+      <a href="#">Stockists</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Help</div>
+      <a href="#">Contact</a>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Woolen. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

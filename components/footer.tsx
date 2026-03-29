@@ -1,19 +1,29 @@
+import Link from "next/link";
+
 const columns = [
   {
     title: "Shop",
-    links: ["The Sauna Hat", "Gift Sets", "Coming Soon"],
+    links: [{ label: "The Sauna Hat", href: "/#product" }],
   },
   {
     title: "Learn",
-    links: ["Why Sauna Hats", "The Science", "Our Materials"],
+    links: [
+      { label: "Why Sauna Hats", href: "/#education" },
+      { label: "The Science", href: "/the-science" },
+      { label: "Our Materials", href: "/our-materials" },
+    ],
   },
   {
     title: "Woolen",
-    links: ["Our Story", "Journal", "Stockists"],
+    links: [{ label: "Our Story", href: "/our-story" }],
   },
   {
     title: "Help",
-    links: ["Contact", "Shipping", "Returns"],
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "Shipping", href: "/shipping" },
+      { label: "Returns", href: "/returns" },
+    ],
   },
 ];
 
@@ -47,13 +57,13 @@ export default function Footer() {
               {col.title}
             </div>
             {col.links.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.label}
+                href={link.href}
                 className="block text-[13px] font-light text-muted-gold mb-2.5 transition-colors hover:text-off-white"
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
         ))}

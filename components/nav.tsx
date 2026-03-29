@@ -1,16 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
+export default function Nav({ solid = false }: { solid?: boolean }) {
+  const [scrolled, setScrolled] = useState(solid);
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
   useEffect(() => {
+    if (solid) return;
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [solid]);
 
   return (
     <nav
@@ -20,13 +22,15 @@ export default function Nav() {
           : "bg-transparent"
       }`}
     >
-      <div
+      <Link
+        href="/"
+        aria-label="Go to homepage"
         className={`font-sans font-normal text-lg tracking-[0.08em] transition-colors duration-400 ${
           scrolled ? "text-charcoal" : "text-off-white"
         }`}
       >
         woolen
-      </div>
+      </Link>
 
       <div
         className="relative"

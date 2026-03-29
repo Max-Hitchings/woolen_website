@@ -1,16 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function Education() {
   return (
-    <section className="bg-off-white px-6 py-14">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true, margin: "-50px" }}
-      >
+    <section id="education" className="bg-off-white px-6 py-14 scroll-mt-20">
+      <div>
         <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-warm-brown mb-4">
           Why it matters
         </p>
@@ -45,7 +36,7 @@ export default function Education() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
