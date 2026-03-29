@@ -18,6 +18,7 @@ This repo contains the Woolen marketing site: a premium, mobile-first brand expe
 - Successful waitlist submissions now emit matching browser and server `Lead` events to Meta using a shared `event_id` for deduplication.
 - The waitlist flow persists `_fbc` from inbound `fbclid` query params and forwards `_fbp` / `_fbc`, hashed email, IP, and user agent to Meta Conversions API when configured.
 - The root layout suppresses hydration warnings on `<body>` so extension-injected body attributes do not trigger false-positive hydration mismatch errors during development.
+- The root layout now wraps the global Meta Pixel client component in a React `Suspense` boundary so Next.js 16 can prerender `/_not-found` without `useSearchParams()` causing a CSR bailout build error.
 - Next.js development config explicitly allows requests from `192.168.0.15` via `allowedDevOrigins`, supporting LAN-based local testing against the dev server.
 
 ## Placeholder / Incomplete

@@ -1,6 +1,10 @@
 # Recent Decisions
 
 ## 2026-03-29
+- Change: Wrapped the global Meta Pixel component in a React `Suspense` boundary from the root layout.
+- Why: Next.js 16 fails static prerendering for `/_not-found` when a layout-mounted client component calls `useSearchParams()` without suspense, which was breaking Vercel builds.
+- Follow-up: Keep any future layout-level consumers of `useSearchParams()` or similar client navigation hooks inside suspense boundaries to avoid regressions during prerender.
+
 - Change: Added Meta Pixel and Meta Conversions API tracking for waitlist signups with deduplicated `Lead` events.
 - Why: Meta ads need reliable browser and server conversion signals so waitlist campaigns can optimize toward real signups instead of weaker click proxies.
 - Follow-up: Populate `META_PIXEL_ID`, `META_ACCESS_TOKEN`, and optional `META_TEST_EVENT_CODE`, then verify deduplication in Meta Events Manager before scaling spend.

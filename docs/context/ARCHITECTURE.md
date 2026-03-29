@@ -28,6 +28,7 @@ The homepage is assembled in `app/page.tsx` from focused section components in `
 ## Shared Layout Patterns
 - `app/layout.tsx` defines global metadata and loads Cormorant Garamond plus DM Sans.
 - `app/layout.tsx` applies `suppressHydrationWarning` on `<body>` to tolerate browser extensions that inject body attributes before client hydration.
+- `app/layout.tsx` wraps `components/meta-pixel.tsx` in `Suspense` because the pixel component reads `useSearchParams()`, and Next.js 16 requires a suspense boundary for that client-side navigation state during prerendering.
 - `components/meta-pixel.tsx` is mounted from `app/layout.tsx` and is responsible for Meta Pixel bootstrap, `PageView` tracking on client-side navigation, and persistence of `_fbc` from inbound `fbclid` params.
 - `components/content-page-shell.tsx` provides the shared structure for supporting content pages: solid nav, page intro section, page content, optional waitlist section, and footer.
 - Content pages use a repeated editorial section pattern with compact labels, serif headings, and light sans-serif body copy.

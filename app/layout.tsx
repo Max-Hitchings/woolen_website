@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import MetaPixel from "@/components/meta-pixel";
@@ -49,7 +50,9 @@ export default function RootLayout({
       className={`${cormorantGaramond.variable} ${dmSans.variable}`}
     >
       <body suppressHydrationWarning>
-        <MetaPixel pixelId={metaPixelId} />
+        <Suspense fallback={null}>
+          <MetaPixel pixelId={metaPixelId} />
+        </Suspense>
         {children}
         <SpeedInsights />
       </body>
