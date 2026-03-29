@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Woolen — Made for Modern Rituals",
   description:
     "Premium merino wool sauna hats. Protect your hair, skin and health. Extend every session.",
+  icons: {
+    icon: "/icon.svg",
+  },
   openGraph: {
     title: "Woolen — Made for Modern Rituals",
     description:

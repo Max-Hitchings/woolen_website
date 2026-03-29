@@ -49,7 +49,15 @@ export default function WaitlistSection() {
         </p>
 
         {status === "success" ? (
-          <p className="text-sm font-light text-warm-brown">{message}</p>
+          <div className="max-w-[320px] mx-auto">
+            <div className="w-10 h-[1px] bg-warm-brown/30 mx-auto mb-6" />
+            <p className="font-serif text-lg text-charcoal mb-2">
+              You&apos;re on the list
+            </p>
+            <p className="text-sm font-light text-warm-brown leading-[1.7]">
+              We&apos;ll reach out when the next run is ready. Until then, thanks for believing in better rituals.
+            </p>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-[320px] mx-auto">
             <input

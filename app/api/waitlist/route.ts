@@ -20,9 +20,41 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Connect to your email service (Loops.so or Google Sheets)
-    // For now, log the email and return success
-    console.log(`Waitlist signup: ${email}`);
+    const loopsApiKey = process.env.LOOPS_API_KEY;
+    const mailingListId = process.env.LOOPS_MAILING_LIST_ID;
+
+    if (!loopsApiKey || !mailingListId) {
+      console.error("Missing LOOPS_API_KEY or LOOPS_MAILING_LIST_ID env vars");
+      return NextResponse.json(
+        { error: "Something went wrong. Please try again." },
+        { status: 500 }
+      );
+    }
+
+    const loopsRes = await fetch("https://app.loops.so/api/v1/contacts/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${loopsApiKey}`,
+      },
+      body: JSON.stringify({
+        email,
+        source: "waitlist",
+        mailingLists: { [mailingListId]: true },
+      }),
+    });
+
+    if (loopsRes.status === 409) {
+      return NextResponse.json({ success: true });
+    }
+
+    if (!loopsRes.ok) {
+      console.error("Loops API error:", loopsRes.status, await loopsRes.text());
+      return NextResponse.json(
+        { error: "Something went wrong. Please try again." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch {

@@ -1,6 +1,14 @@
 # Recent Decisions
 
 ## 2026-03-29
+- Change: Replaced the default tab icon with a custom Woolen favicon.
+- Why: The live site needed a browser tab icon that matched the brand rather than the default framework mark.
+- Follow-up: If a final monogram or brand icon is introduced, update `app/icon.svg` to match it.
+
+- Change: Added `192.168.0.15` to Next.js `allowedDevOrigins` in `next.config.ts`.
+- Why: Local development needed to accept requests from that LAN host without Next.js blocking the origin.
+- Follow-up: If the dev machine address changes or more devices need access, keep the allowlist in sync and restart the dev server after edits.
+
 - Change: Added a founders introduction section to the homepage using public/images/founders.jpg.
 - Why: The homepage needed a brief, personal founder touchpoint that supports brand trust and premium positioning without replacing the broader brand story.
 - Follow-up: Keep founder copy restrained and update the section if a more formal brand or founder narrative is introduced elsewhere.

@@ -39,14 +39,14 @@ export default function Footer() {
 
       {/* Social icons */}
       <div className="flex gap-4 mb-9">
-        {["IG", "LI", "X"].map((label) => (
-          <div
-            key={label}
-            className="w-[36px] h-[36px] rounded-full border border-muted-gold/40 flex items-center justify-center"
-          >
-            <span className="text-[10px] text-muted-gold">{label}</span>
-          </div>
-        ))}
+        <a
+          href="https://instagram.com/wearwoolen"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-[36px] h-[36px] rounded-full border border-muted-gold/40 flex items-center justify-center transition-colors hover:border-off-white"
+        >
+          <span className="text-[10px] text-muted-gold">IG</span>
+        </a>
       </div>
 
       {/* Link columns */}
