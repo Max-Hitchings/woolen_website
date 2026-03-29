@@ -9,7 +9,7 @@ export default function TrustSignals() {
             performs.&rdquo;
           </p>
           <p className="text-xs font-normal tracking-[0.12em] uppercase text-muted-gold mb-10">
-            Poppy Maguire-Cox - Customer
+            Poppy Maguire-Cox - Customer (first batch)
           </p>
           <div className="flex justify-center gap-8 items-center opacity-40">
             <span className="text-xs tracking-[0.1em] uppercase text-off-white font-light">
